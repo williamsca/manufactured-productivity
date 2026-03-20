@@ -21,11 +21,10 @@ Goolsbee & Syverson (2023) document a 50-year decline in U.S. construction secto
 | ID | Task | Detail | Source |
 |----|------|--------|--------|
 | 1a | BEA construction sector productivity | Real value-added, employment, and TFP for NAICS 23 (Construction), 1950-present. The G&S comparison benchmark. | BEA Industry Accounts / KLEMS |
-| 1b | ~~Extend MH employment backward~~ **Done** | Census CBP API: SIC 2451 (1986-1997) + NAICS 321991 via NAICS1997/2002/2007/2012/2017 vintages (1998-2022). Single consistent CBP series (March-12 employment) used throughout; no splice needed. Script: `program/import/cbp-employment.R` → `derived/cbp_emp.Rds`. | Census CBP API |
 | 1c | Extend MH value-added | ASM 2002-2016 is too short. Census of Manufactures (quinquennial) covers SIC 2451 back to 1972. Annual ASM may extend to 2022 via newer API endpoints. Also consider NBER-CES Manufacturing Database for a continuous series. | Census CoM, NBER-CES |
 | 1d | Deflator for MH value-added | Options: (i) PPI for NAICS 321991, (ii) broader PPI for prefab wood buildings (PCU321992), (iii) GDP deflator (G&S robustness check), (iv) CPI for housing. Deflator choice is analytically important — mirrors the core G&S finding about deflator sensitivity. | BLS PPI, BEA |
 | 1e | Site-built housing physical output | Census housing completions (SF, MF) + CES employment for residential construction (NAICS 2361/2362). Replicates G&S Figure 6 as one half of the comparison. | Census New Residential Construction, BLS CES |
-| 1f | MH physical characteristics | Average square footage, single/double/triple-wide shares over time for quality adjustment — analogous to G&S's sq-ft-per-employee correction. | Census MHS |
+
 
 ## Phase 2: Core Analyses
 
