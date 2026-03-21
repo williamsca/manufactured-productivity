@@ -8,16 +8,14 @@ library(ggplot2)
 
 v_palette <- c("#0072B2", "#D55E00", "#009E73", "#F0E460")
 
-index_to <- function(x, years, base) {
-    base_val <- x[years == base]
-    if (length(base_val) == 0 || is.na(base_val)) {
-        return(rep(NA_real_, length(x)))
-    }
-    x / base_val
-}
-
 # import ----
 dt_nat <- as.data.table(readRDS(here("derived", "sample.Rds")))
+series_labels <- c(
+    ship_pemp_mh = "MH shipments / L",
+    place_pemp_mh = "MH placements / L",
+    placements_fisher_pemp = "MH placements / L (Fisher)",
+    permits_pemp = "Residential permits / L"
+)
 
 # Reshape to long for ggplot ----
 v_emp <- grep("_pemp", names(dt_nat), value = TRUE)
@@ -34,9 +32,14 @@ p_output_pemp <- ggplot(
     dt_long[!is.na(output_pemp)],
     aes(x = year, y = output_pemp, color = series)
 ) +
-    geom_line(linewidth = 1) +
-    geom_hline(yintercept = 1, linetype = "dashed", color = "grey50") +
-    scale_color_manual(values = v_palette) +
+    geom_point(size = 2) +
+    geom_line(linewidth = 0.5, linetype = "dashed") +
+    geom_hline(yintercept = 0, linetype = "dashed", color = "grey50") +
+    scale_color_manual(
+        values = setNames(v_palette[seq_along(series_labels)], names(series_labels)),
+        breaks = names(series_labels),
+        labels = unname(series_labels)
+    ) +
     labs(
         title = paste0("Output per employee"),
         x = NULL,
@@ -50,7 +53,7 @@ p_output_pemp
 
 ggsave(
     here("output", "output_pemp.pdf"),
-    p_index,
+    p_output_pemp,
     width = 9,
     height = 5
 )
