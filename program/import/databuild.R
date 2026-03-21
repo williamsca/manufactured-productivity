@@ -86,6 +86,7 @@ dt_mhs_state <- readRDS(here("derived", "mhs-state-year.Rds"))
 dt_mhs_nat <- readRDS(here("derived", "mhs-national-year.Rds"))
 dt_cbp <- fread(here("derived", "census-cbp.csv"))
 dt_bps <- readRDS(here("derived", "census-bps.Rds"))
+dt_nberces <- readRDS(here("derived", "nberces-mh.Rds"))
 
 # CBP: state and national wide employment ----
 v_emp_cols <- c(
@@ -184,6 +185,15 @@ dt_nat[, placements_fisher := compute_fisher_quantity(
 
 dt_nat <- compute_productivity_metrics(dt_nat)
 dt_nat[, placements_fisher_pemp := placements_fisher / emp_mh]
+
+# NBER-CES: value added, TFP, deflators ----
+dt_nat <- merge(dt_nat, dt_nberces, by = "year", all = TRUE)
+
+# real value added per employee (1997$, thousands)
+dt_nat[, real_vadd_pemp := (vadd_nberces / piship_nberces) / emp_nberces]
+
+# MH shipments per employee (NBER-CES)
+dt_nat[, ship_pemp_mh_nberces := shipments / (emp_nberces * 1000)]
 
 setorder(dt_nat, year)
 

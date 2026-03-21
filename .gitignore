@@ -1,5 +1,8 @@
 derived/
 output/
+data/nber-ces/
+
+*.pdf
 
 # History files
 .Rhistory

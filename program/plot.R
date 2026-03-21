@@ -14,7 +14,8 @@ series_labels <- c(
     ship_pemp_mh = "MH shipments / L",
     place_pemp_mh = "MH placements / L",
     placements_fisher_pemp = "MH placements / L (Fisher)",
-    permits_pemp = "Residential permits / L"
+    permits_pemp = "Residential permits / L",
+    ship_pemp_mh_nberces = "MH shipments / L (NBER-CES)"
 )
 
 # Reshape to long for ggplot ----
@@ -29,7 +30,7 @@ dt_long <- melt(
 
 # Plot 1: output per employee ----
 p_output_pemp <- ggplot(
-    dt_long[!is.na(output_pemp)],
+    dt_long[!is.na(output_pemp) & series %in% names(series_labels)],
     aes(x = year, y = output_pemp, color = series)
 ) +
     geom_point(size = 2) +
@@ -54,6 +55,52 @@ p_output_pemp
 ggsave(
     here("output", "output_pemp.pdf"),
     p_output_pemp,
+    width = 9,
+    height = 5
+)
+
+# Plot 2: Real value added per employee (NBER-CES) ----
+dt_va <- dt_nat[!is.na(real_vadd_pemp)]
+
+p_va_pemp <- ggplot(dt_va, aes(x = year, y = real_vadd_pemp)) +
+    geom_point(size = 2, color = v_palette[1]) +
+    geom_line(
+        linewidth = 0.5, linetype = "dashed", color = v_palette[1]
+    ) +
+    labs(
+        title = "Real value added per employee (1997$, thousands)",
+        subtitle = "NAICS 321991, NBER-CES Manufacturing Database",
+        x = NULL,
+        y = NULL
+    ) +
+    theme_classic()
+
+ggsave(
+    here("output", "va_pemp.pdf"),
+    p_va_pemp,
+    width = 9,
+    height = 5
+)
+
+# Plot 3: TFP index (NBER-CES) ----
+dt_tfp <- dt_nat[!is.na(tfp4_nberces)]
+
+p_tfp <- ggplot(dt_tfp, aes(x = year, y = tfp4_nberces)) +
+    geom_point(size = 2, color = v_palette[1]) +
+    geom_line(
+        linewidth = 0.5, linetype = "dashed", color = v_palette[1]
+    ) +
+    labs(
+        title = "Total factor productivity index",
+        subtitle = "NAICS 321991, NBER-CES Manufacturing Database",
+        x = NULL,
+        y = NULL
+    ) +
+    theme_classic()
+
+ggsave(
+    here("output", "tfp.pdf"),
+    p_tfp,
     width = 9,
     height = 5
 )
