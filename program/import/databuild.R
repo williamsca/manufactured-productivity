@@ -194,6 +194,9 @@ dt_nat[, real_vadd_pemp := (vadd_nberces / piship_nberces) / emp_nberces]
 
 # MH shipments per employee (NBER-CES)
 dt_nat[, ship_pemp_mh_nberces := shipments / (emp_nberces * 1000)]
+dt_nat[, place_pemp_mh_nberces := placements / (emp_nberces * 1000)]
+dt_nat[, place_fisher_pemp_mh_nberces :=
+    placements_fisher / (emp_nberces * 1000)]
 
 setorder(dt_nat, year)
 

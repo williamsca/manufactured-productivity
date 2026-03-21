@@ -1,7 +1,7 @@
 # Citations seem good enough for now, but can change formatting with CSL
 # CSL = chicago-author-date
 
-%.pdf: %.tex exactions-monopoly.bib
+%.pdf: %.tex manufactured-productivity.bib
 	pdflatex $*
 	bibtex $*
 	pdflatex $*

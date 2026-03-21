@@ -11,11 +11,11 @@ v_palette <- c("#0072B2", "#D55E00", "#009E73", "#F0E460")
 # import ----
 dt_nat <- as.data.table(readRDS(here("derived", "sample.Rds")))
 series_labels <- c(
-    ship_pemp_mh = "MH shipments / L",
-    place_pemp_mh = "MH placements / L",
-    placements_fisher_pemp = "MH placements / L (Fisher)",
-    permits_pemp = "Residential permits / L",
-    ship_pemp_mh_nberces = "MH shipments / L (NBER-CES)"
+    place_pemp_mh_nberces = "MH placements / L",
+    # placements_fisher_pemp = "MH placements / L (Fisher)",
+    place_fisher_pemp_mh_nberces = "MH placements / L (Fisher)",
+    # permits_pemp = "Residential permits / L",
+    ship_pemp_mh_nberces = "MH shipments / L"
 )
 
 # Reshape to long for ggplot ----
@@ -36,6 +36,7 @@ p_output_pemp <- ggplot(
     geom_point(size = 2) +
     geom_line(linewidth = 0.5, linetype = "dashed") +
     geom_hline(yintercept = 0, linetype = "dashed", color = "grey50") +
+    # geom_vline(xintercept = 1976, linetype = "dashed", color = "grey50") +
     scale_color_manual(
         values = setNames(v_palette[seq_along(series_labels)], names(series_labels)),
         breaks = names(series_labels),
