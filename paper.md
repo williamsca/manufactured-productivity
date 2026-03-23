@@ -11,49 +11,27 @@ bibliography: manufactured-productivity.bib
 
 # Introduction
 
-Aggregate data show a large and decades-long decline in U.S.
+Aggregate data point to a large and decades-long decline in U.S.
 construction sector productivity. Value added per worker in 2020
 was roughly 40 percent below its 1970 level, a stunningly poor
-record for a major sector
-[@goolsbee_strange_2023]. Manufactured housing---factory-built,
-federally regulated under the HUD Code since 1976, and
-concentrated among a handful of large producers---offers a natural
-test of whether the construction productivity puzzle is inherent
-to *building* or specific to the *building site*. If
-factory production escapes the forces dragging down site-built
-productivity, the implication is that weather, local regulation,
-and fragmented project management are the binding constraints.
+record for a major sector [@goolsbee_strange_2023]. Conversely, in manufacturing industries where goods can be produced in factories, productivity has risen substantially over time [@potter_origins_2025].
 
-Using physical output measures, I show that manufactured housing
+But about manufactured housing? 
+
+Manufactured homes are immune to many of the frictions that are often blamed for poor construction productivity: unpredictable weather, fragmented local building codes, and the complex coordination of multiple subcontractors on a construction site. Factory-built housing is assembled indoors in a controlled environment and has been regulated by a single federal code since 1976. Thus, the sector offers a natural test case: are site-specific frictions the main drivers of poor construction productivity, or are there more general forces at work that have also hamstrung factory-build housing?
+
+I start by studying physical output measures. Manufactured housing
 (MH) shipments per employee fell by roughly half between the
-mid-1990s and the mid-2000s and have not recovered. This decline,
-however, is misleading. Over the same period, the average sales
-price of a manufactured home more than doubled in nominal terms,
-reflecting a shift toward larger, higher-quality double-wide
-units with better fixtures and appliances. When I turn to
-value-added measures from the NBER-CES Manufacturing Industry
-Database, real value added per employee shows a long upward trend
-from the late 1950s through the late 1990s, a cyclical dip during
-the housing bust, and a recovery to near-peak levels by 2016.
+mid-1990s and the mid-2000s, though they partly recovered after 2015. In terms of raw output, MH productivity is dismal.
 
-Total factor productivity (TFP) tells a different and more
-troubling story. The NBER-CES four-factor TFP index for NAICS
-321991 rose steadily from 0.67 in 1958 to 1.01 in 1998, then
-fell to 0.54 by 2013---a 46 percent collapse in 15 years. This
-decline is comparable to, and arguably worse than, what Goolsbee
-and Syverson document for site-built construction. The partial
-recovery to 0.65 by 2016 still leaves TFP at its mid-1960s
-level. Labor productivity recovered only because of capital
-deepening; the underlying efficiency with which MH factories
-combine labor, capital, energy, and materials has deteriorated
-dramatically. Manufactured housing factories are not immune to
-the construction productivity puzzle---they may be even more
-afflicted.
+The quality of MH units has improved substantially over time, however. In nominal terms, average sales prices nearly tripled between 1990 and 2018, rising from \$28,000 to almost \$80,000, reflecting a shift to higher-quality double-wide units with better fixtures and appliances. To capture these quality improvements, I turn to the real value added per employee. This series tells a similar story: after steady growth from the late 1950s through the 1990s, real value added per worked stagnated after 2000. At the same time, value added in similar wood product manufacturing industries and the rest of manufacturing continued to grow, suggesting that something specific to the MH industry drove the post-2000 stagnation.
+
+Measures of total factor productivity (TFP) suggest an even starker post-2000 collapse. After years of moderate growth, the NBER-CES TFP index for the MH sector collapsed by over 40\% between 1999 and 2015 even as productivity in other manufacturing industries continued to grow. MH are not immune to the construction productivity puzzle, and appear to be even more vulnerable to the forces driving down construction productivity.
 
 # Data
 
 I combine three data sources to construct a national panel of
-manufactured housing productivity from 1958 to 2024.
+manufactured housing productivity from 1958 to 2018.
 
 **Census Manufactured Housing Survey (MHS).** The MHS provides
 annual counts of manufactured home shipments and placements,
@@ -98,9 +76,7 @@ higher-quality units.
   \includegraphics[width=\textwidth]{output/output_pemp.pdf}
   \begin{flushleft}
   \begin{footnotesize}
-  Notes: MH series use CBP employment for NAICS 321991.
-  Residential permits series uses CBP employment for NAICS 2361.
-  Source: Census MHS, Census BPS, County Business Patterns.
+  \emph{  Notes:} MH placements and shipments per employee. Fisher placements are a price-weighted aggregate of single- and double-wide placements. Census MHS and NBER-CES Manufacturing Industry Database.
   \end{footnotesize}
   \end{flushleft}
 \end{figure}
@@ -124,12 +100,11 @@ fewer but substantially more valuable homes.
   \includegraphics[width=\textwidth]{output/va_pemp.pdf}
   \begin{flushleft}
   \begin{footnotesize}
-  Notes: Value added deflated by shipments price index (1997 =
-  1.0). Employment in thousands. Comparison series are
+  \emph{  Notes:} Value added deflated by shipments price index (1997 =
+  1.0). Comparison series are
   aggregates for other NAICS 321 industries and all other
   manufacturing industries excluding NAICS 321991. NAICS 321 is
-  wood product manufacturing.
-  Source: NBER-CES Manufacturing Industry Database.
+  wood product manufacturing. NBER-CES Manufacturing Industry Database.
   \end{footnotesize}
   \end{flushleft}
 \end{figure}
@@ -165,13 +140,12 @@ productivity.
   \includegraphics[width=\textwidth]{output/tfp.pdf}
   \begin{flushleft}
   \begin{footnotesize}
-  Notes: Four-factor TFP index using labor, capital, energy, and
+  \emph{  Notes:} Four-factor TFP index using labor, capital, energy, and
   materials inputs. Base year 1997 = 1.0. Comparison series are
   Domar-weighted aggregates of annual industry TFP growth for
   other NAICS 321 industries and all other manufacturing
   industries excluding NAICS 321991. NAICS 321 is wood product
-  manufacturing.
-  Source: NBER-CES Manufacturing Industry Database.
+  manufacturing. NBER-CES Manufacturing Industry Database.
   \end{footnotesize}
   \end{flushleft}
 \end{figure}
