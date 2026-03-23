@@ -36,14 +36,32 @@ nberces_series_labels <- c(
     truck_trailers = "Truck trailers",
     wood_kitchen_cabinets = "Wood kitchen cabinets"
 )
+nberces_va_labels <- c(
+    mh = "Manufactured homes",
+    other_321 = "Other 321 industries",
+    other_manufacturing = "All other manufacturing"
+)
+nberces_tfp_labels <- c(
+    mh = "Manufactured homes",
+    other_321 = "Other 321 industries",
+    other_manufacturing = "All other manufacturing"
+)
 nberces_colors <- c(
     mh = v_palette[1],
     prefab_wood_bldg = v_palette[2],
     truck_trailers = v_palette[3],
-    wood_kitchen_cabinets = "#CC79A7"
+    wood_kitchen_cabinets = "#CC79A7",
+    other_321 = "#D55E00",
+    other_32 = "#009E73",
+    other_manufacturing = "#595959"
 )
 nberces_shapes <- setNames(v_shapes, names(nberces_series_labels))
 nberces_lines <- setNames(v_lines, names(nberces_series_labels))
+nberces_agg_shapes <- c(
+    mh = 16,
+    other_321 = 17,
+    other_manufacturing = 18
+)
 
 # Reshape to long for ggplot ----
 v_emp <- grep("_pemp", names(dt_nat), value = TRUE)
@@ -91,33 +109,30 @@ ggsave(
 )
 
 # Plot 2: Real value added per employee (NBER-CES) ----
-dt_va <- dt_nberces_ind[!is.na(vadd_nberces / piship_nberces / emp_nberces)]
-dt_va[, real_vadd_pemp := vadd_nberces / piship_nberces / emp_nberces]
+dt_va <- dt_nberces_ind[
+    !is.na(real_vadd_pemp_nberces) & series %in% names(nberces_va_labels)
+]
 
 p_va_pemp <- ggplot(dt_va, aes(
-    x = year, y = real_vadd_pemp, color = series, shape = series, linetype = series
+    x = year, y = real_vadd_pemp_nberces, color = series, shape = series
 )) +
-    geom_line(linewidth = 0.7) +
+    geom_line(linewidth = 0.5, linetype = "dashed") +
     geom_point(size = 2) +
     scale_color_manual(
         values = nberces_colors,
-        breaks = names(nberces_series_labels),
-        labels = unname(nberces_series_labels)
+        breaks = names(nberces_va_labels),
+        labels = unname(nberces_va_labels)
     ) +
     scale_shape_manual(
-        values = nberces_shapes,
-        breaks = names(nberces_series_labels),
-        labels = unname(nberces_series_labels)
-    ) +
-    scale_linetype_manual(
-        values = nberces_lines,
-        breaks = names(nberces_series_labels),
-        labels = unname(nberces_series_labels)
+        values = nberces_agg_shapes,
+        breaks = names(nberces_va_labels),
+        labels = unname(nberces_va_labels)
     ) +
     labs(
         x = NULL,
         y = "Real value added per employee (1997$, thousands)",
-        color = NULL
+        color = NULL,
+        shape = NULL
     ) +
     theme_paper()
 
@@ -129,32 +144,30 @@ ggsave(
 )
 
 # Plot 3: TFP index (NBER-CES) ----
-dt_tfp <- dt_nberces_ind[!is.na(tfp4_nberces)]
+dt_tfp <- dt_nberces_ind[
+    !is.na(tfp4_nberces) & series %in% names(nberces_tfp_labels)
+]
 
 p_tfp <- ggplot(dt_tfp, aes(
-    x = year, y = tfp4_nberces, color = series, shape = series, linetype = series
+    x = year, y = tfp4_nberces, color = series, shape = series
 )) +
-    geom_line(linewidth = 0.7) +
+    geom_line(linewidth = 0.5, linetype = "dashed") +
     geom_point(size = 2) +
     scale_color_manual(
         values = nberces_colors,
-        breaks = names(nberces_series_labels),
-        labels = unname(nberces_series_labels)
+        breaks = names(nberces_tfp_labels),
+        labels = unname(nberces_tfp_labels)
     ) +
     scale_shape_manual(
-        values = nberces_shapes,
-        breaks = names(nberces_series_labels),
-        labels = unname(nberces_series_labels)
-    ) +
-    scale_linetype_manual(
-        values = nberces_lines,
-        breaks = names(nberces_series_labels),
-        labels = unname(nberces_series_labels)
+        values = nberces_agg_shapes,
+        breaks = names(nberces_tfp_labels),
+        labels = unname(nberces_tfp_labels)
     ) +
     labs(
         x = NULL,
         y = "TFP index (1997 = 1.0)",
-        color = NULL
+        color = NULL,
+        shape = NULL
     ) +
     theme_paper()
 

@@ -125,8 +125,11 @@ fewer but substantially more valuable homes.
   \begin{flushleft}
   \begin{footnotesize}
   Notes: Value added deflated by shipments price index (1997 =
-  1.0). Employment in thousands.
-  Source: NBER-CES Manufacturing Industry Database, NAICS 321991.
+  1.0). Employment in thousands. Comparison series are
+  aggregates for other NAICS 321 industries and all other
+  manufacturing industries excluding NAICS 321991. NAICS 321 is
+  wood product manufacturing.
+  Source: NBER-CES Manufacturing Industry Database.
   \end{footnotesize}
   \end{flushleft}
 \end{figure}
@@ -134,13 +137,18 @@ fewer but substantially more valuable homes.
 ## Total factor productivity
 
 Figure \ref{fig:tfp} plots the NBER-CES four-factor TFP index,
-which adjusts for labor, capital, energy, and materials inputs.
-TFP rose steadily from 0.67 in 1958 to a peak of 1.01 in 1998,
-then declined precipitously to 0.54 by 2013. The partial recovery
-to 0.65 by 2016 still leaves TFP well below its 1972 level.
-This 46 percent TFP decline over 15 years is comparable to the
-productivity collapse that @goolsbee_strange_2023 document for
-the site-built construction sector as a whole.
+which adjusts for labor, capital, energy, and materials inputs,
+for manufactured housing and a Domar-weighted aggregate of all
+other manufacturing industries. MH TFP rose steadily from 0.67
+in 1958 to a peak of 1.01 in 1998, then declined precipitously
+to 0.54 by 2013. The partial recovery to 0.65 by 2016 still
+leaves TFP well below its 1972 level. By contrast, the rest of
+manufacturing returned to roughly its 1997 level by 2016. This
+sharp post-1998 divergence suggests MH's productivity collapse
+was not a broad manufacturing phenomenon. The magnitude of the
+MH decline is comparable to the productivity collapse that
+@goolsbee_strange_2023 document for the site-built construction
+sector as a whole.
 
 The juxtaposition of Figures \ref{fig:va-pemp} and \ref{fig:tfp}
 implies that labor productivity recovered only through capital
@@ -158,8 +166,12 @@ productivity.
   \begin{flushleft}
   \begin{footnotesize}
   Notes: Four-factor TFP index using labor, capital, energy, and
-  materials inputs. Base year 1997 = 1.0.
-  Source: NBER-CES Manufacturing Industry Database, NAICS 321991.
+  materials inputs. Base year 1997 = 1.0. Comparison series are
+  Domar-weighted aggregates of annual industry TFP growth for
+  other NAICS 321 industries and all other manufacturing
+  industries excluding NAICS 321991. NAICS 321 is wood product
+  manufacturing.
+  Source: NBER-CES Manufacturing Industry Database.
   \end{footnotesize}
   \end{flushleft}
 \end{figure}
