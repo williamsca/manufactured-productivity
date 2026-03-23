@@ -139,7 +139,7 @@ TFP rose steadily from 0.67 in 1958 to a peak of 1.01 in 1998,
 then declined precipitously to 0.54 by 2013. The partial recovery
 to 0.65 by 2016 still leaves TFP well below its 1972 level.
 This 46 percent TFP decline over 15 years is comparable to the
-productivity collapse that @goolsbee2023construction document for
+productivity collapse that @goolsbee_strange_2023 document for
 the site-built construction sector as a whole.
 
 The juxtaposition of Figures \ref{fig:va-pemp} and \ref{fig:tfp}
@@ -187,6 +187,17 @@ trained assembly workers that supported peak-era production
 thinned out as volume fell---suppliers exited and skilled labor
 dispersed. Rebuilding these networks at lower volumes is more
 costly per unit.
+
+Part of the post-1998 TFP decline may therefore reflect a
+transitional measurement issue rather than technological regress.
+If factories and equipment installed during the boom remained in
+place as shipments collapsed, measured capital input would adjust
+more slowly than output, mechanically depressing TFP. In
+principle this effect should fade as capital depreciates or is
+scrapped, but the persistence of low TFP through 2016 suggests
+that excess legacy capital was not the whole story and that the
+industry may instead have settled into a persistently low-scale
+equilibrium.
 
 Geographic fragmentation compounds the problem. Transport costs
 for finished manufactured homes are steep (wide loads, escort

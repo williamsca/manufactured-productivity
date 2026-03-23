@@ -10,12 +10,25 @@ v_palette <- c("#0072B2", "#D55E00", "#009E73", "#F0E460")
 
 # import ----
 dt_nat <- as.data.table(readRDS(here("derived", "sample.Rds")))
+dt_nberces_ind <- as.data.table(readRDS(here("derived", "nberces-industries.Rds")))
 series_labels <- c(
     place_pemp_mh_nberces = "MH placements / L",
     # placements_fisher_pemp = "MH placements / L (Fisher)",
     place_fisher_pemp_mh_nberces = "MH placements / L (Fisher)",
     # permits_pemp = "Residential permits / L",
     ship_pemp_mh_nberces = "MH shipments / L"
+)
+nberces_series_labels <- c(
+    mh = "Manufactured homes",
+    prefab_wood_bldg = "Prefabricated wood buildings",
+    truck_trailers = "Truck trailers",
+    wood_kitchen_cabinets = "Wood kitchen cabinets"
+)
+nberces_colors <- c(
+    mh = v_palette[1],
+    prefab_wood_bldg = v_palette[2],
+    truck_trailers = v_palette[3],
+    wood_kitchen_cabinets = "#CC79A7"
 )
 
 # Reshape to long for ggplot ----
@@ -43,9 +56,8 @@ p_output_pemp <- ggplot(
         labels = unname(series_labels)
     ) +
     labs(
-        title = paste0("Output per employee"),
         x = NULL,
-        y = NULL,
+        y = "Units per employee",
         color = NULL
     ) +
     theme_classic() +
@@ -61,20 +73,28 @@ ggsave(
 )
 
 # Plot 2: Real value added per employee (NBER-CES) ----
-dt_va <- dt_nat[!is.na(real_vadd_pemp)]
+dt_va <- dt_nberces_ind[!is.na(vadd_nberces / piship_nberces / emp_nberces)]
+dt_va[, real_vadd_pemp := vadd_nberces / piship_nberces / emp_nberces]
 
-p_va_pemp <- ggplot(dt_va, aes(x = year, y = real_vadd_pemp)) +
-    geom_point(size = 2, color = v_palette[1]) +
+p_va_pemp <- ggplot(dt_va, aes(
+    x = year, y = real_vadd_pemp, color = series
+)) +
+    geom_point(size = 1.6) +
     geom_line(
-        linewidth = 0.5, linetype = "dashed", color = v_palette[1]
+        linewidth = 0.5, linetype = "dashed"
+    ) +
+    scale_color_manual(
+        values = nberces_colors,
+        breaks = names(nberces_series_labels),
+        labels = unname(nberces_series_labels)
     ) +
     labs(
-        title = "Real value added per employee (1997$, thousands)",
-        subtitle = "NAICS 321991, NBER-CES Manufacturing Database",
         x = NULL,
-        y = NULL
+        y = "Real value added per employee (1997$, thousands)",
+        color = NULL
     ) +
-    theme_classic()
+    theme_classic() +
+    theme(legend.position = "bottom")
 
 ggsave(
     here("output", "va_pemp.pdf"),
@@ -84,20 +104,25 @@ ggsave(
 )
 
 # Plot 3: TFP index (NBER-CES) ----
-dt_tfp <- dt_nat[!is.na(tfp4_nberces)]
+dt_tfp <- dt_nberces_ind[!is.na(tfp4_nberces)]
 
-p_tfp <- ggplot(dt_tfp, aes(x = year, y = tfp4_nberces)) +
-    geom_point(size = 2, color = v_palette[1]) +
+p_tfp <- ggplot(dt_tfp, aes(x = year, y = tfp4_nberces, color = series)) +
+    geom_point(size = 1.6) +
     geom_line(
-        linewidth = 0.5, linetype = "dashed", color = v_palette[1]
+        linewidth = 0.5, linetype = "dashed"
+    ) +
+    scale_color_manual(
+        values = nberces_colors,
+        breaks = names(nberces_series_labels),
+        labels = unname(nberces_series_labels)
     ) +
     labs(
-        title = "Total factor productivity index",
-        subtitle = "NAICS 321991, NBER-CES Manufacturing Database",
         x = NULL,
-        y = NULL
+        y = "TFP index (1997 = 1.0)",
+        color = NULL
     ) +
-    theme_classic()
+    theme_classic() +
+    theme(legend.position = "bottom")
 
 ggsave(
     here("output", "tfp.pdf"),
