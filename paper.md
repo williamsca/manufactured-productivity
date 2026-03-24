@@ -13,7 +13,7 @@ bibliography: manufactured-productivity.bib
 
 Aggregate data point to a large and decades-long decline in U.S.
 construction sector productivity. Value added per worker in 2020
-was roughly 40 percent below its 1970 level, a stunningly poor
+was roughly 40 percent below its 1970 level, a remarkably poor
 record for a major sector [@goolsbee_strange_2023]. Conversely, in manufacturing industries where goods can be produced in factories, productivity has risen substantially over time [@potter_origins_2025].
 
 But about manufactured housing? 
