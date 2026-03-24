@@ -10,6 +10,8 @@
 #   vadd   - value added
 #   vship  - value of shipments
 #   matcost- materials cost
+#   invest - investment
+#   cap    - capital stock
 #   piship - shipments price deflator (1997 = 1.0)
 #   pimat  - materials price deflator (1997 = 1.0)
 #   tfp4   - 4-factor TFP index
@@ -66,6 +68,8 @@ dt_industries <- dt_industries[, .(
     vadd_nberces = vadd,      # millions, nominal
     vship_nberces = vship,    # millions, nominal
     matcost_nberces = matcost,# millions, nominal
+    invest_nberces = invest,  # millions, nominal
+    cap_nberces = cap,        # millions, nominal
     piship_nberces = piship,  # shipments deflator (1997=1)
     pimat_nberces = pimat,    # materials deflator (1997=1)
     real_vadd_pemp_nberces = (vadd / piship) / emp,
@@ -156,6 +160,8 @@ build_aggregate_series <- function(subset_idx, series_id, label) {
         vadd_nberces = NA_real_,
         vship_nberces = NA_real_,
         matcost_nberces = NA_real_,
+        invest_nberces = NA_real_,
+        cap_nberces = NA_real_,
         piship_nberces = NA_real_,
         pimat_nberces = NA_real_,
         real_vadd_pemp_nberces,

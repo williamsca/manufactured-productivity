@@ -52,6 +52,10 @@ nberces_tfp_labels <- c(
     other_321 = "Other 321 industries",
     other_manufacturing = "All other manufacturing"
 )
+mh_capital_labels <- c(
+    invest_nberces = "Investment",
+    cap_nberces = "Capital stock"
+)
 nberces_colors <- c(
     mh = v_palette[1],
     prefab_wood_bldg = v_palette[2],
@@ -149,7 +153,45 @@ ggsave(
     height = 5
 )
 
-# Plot 3: TFP index (NBER-CES) ----
+# Plot 3: MH investment and capital stock (NBER-CES) ----
+dt_mh_capital <- melt(
+    dt_nat[, .(year, invest_nberces, cap_nberces)],
+    id.vars = "year",
+    variable.name = "series",
+    value.name = "value"
+)[!is.na(value)]
+
+p_mh_capital <- ggplot(dt_mh_capital, aes(
+    x = year, y = value, color = series, shape = series
+)) +
+    geom_line(linewidth = 0.5, linetype = "dashed") +
+    geom_point(size = 2) +
+    scale_color_manual(
+        values = setNames(v_palette[seq_along(mh_capital_labels)], names(mh_capital_labels)),
+        breaks = names(mh_capital_labels),
+        labels = unname(mh_capital_labels)
+    ) +
+    scale_shape_manual(
+        values = setNames(v_shapes[seq_along(mh_capital_labels)], names(mh_capital_labels)),
+        breaks = names(mh_capital_labels),
+        labels = unname(mh_capital_labels)
+    ) +
+    labs(
+        x = NULL,
+        y = "Millions of current dollars",
+        color = NULL,
+        shape = NULL
+    ) +
+    theme_paper()
+
+ggsave(
+    here("output", "mh_capital.pdf"),
+    p_mh_capital,
+    width = 9,
+    height = 5
+)
+
+# Plot 4: TFP index (NBER-CES) ----
 dt_tfp <- dt_nberces_ind[
     !is.na(tfp4_nberces) & series %in% names(nberces_tfp_labels)
 ]

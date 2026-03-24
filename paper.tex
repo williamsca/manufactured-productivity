@@ -32,7 +32,7 @@
 
 
 
-\title{\bigskip \bigskip Productivity in Manufactured Housing }
+\title{\bigskip \bigskip Productivity in Off-Site Construction }
  
 
 %\author{true}
@@ -59,16 +59,17 @@ Virginia} \newline\footnotesize \protect\url{chv7bg@virginia.edu}\vspace*{0.2in}
 
 
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Aggregate data point to a large and decades-long decline in U.S.
 construction sector productivity. Value added per worker in 2020 was
-roughly 40 percent below its 1970 level, a stunningly poor record for a
+roughly 40 percent below its 1970 level, a remarkably poor record for a
 major sector \citep{goolsbee_strange_2023}. Conversely, in manufacturing
 industries where goods can be produced in factories, productivity has
 risen substantially over time \citep{potter_origins_2025}.
 
-But about manufactured housing?
+So, what about manufactured housing?
 
 Manufactured homes are immune to many of the frictions that are often
 blamed for poor construction productivity: unpredictable weather,
@@ -83,67 +84,77 @@ hamstrung factory-build housing?
 I start by studying physical output measures. Manufactured housing (MH)
 shipments per employee fell by roughly half between the mid-1990s and
 the mid-2000s, though they partly recovered after 2015. In terms of raw
-output, MH productivity is dismal.
+output, MH productivity appears dismal.
 
-The quality of MH units has improved substantially over time, however.
-In nominal terms, average sales prices nearly tripled between 1990 and
-2018, rising from \$28,000 to almost \$80,000, reflecting a shift to
-higher-quality double-wide units with better fixtures and appliances. To
-capture these quality improvements, I turn to the real value added per
-employee. This series tells a similar story: after steady growth from
-the late 1950s through the 1990s, real value added per worked stagnated
-after 2000. At the same time, value added in similar wood product
-manufacturing industries and the rest of manufacturing continued to
-grow, suggesting that something specific to the MH industry drove the
+Quantity-based measures of productivity struggle to account for changes
+in quality over time. Despite the apparent homogeneity of mobile homes,
+quality in this market does appear to have increased: in nominal terms,
+average sales prices nearly tripled between 1990 and 2018, rising from
+\$28,000 to almost \$80,000. The market also shifted modestly towards
+double-wide units over the same period, potentially with higher quality
+fixtures and appliances.
+
+To capture these quality improvements, I turn to the real value added
+per employee. This series tells a similar story: after steady growth
+from the late 1950s through the 1990s, real value added per worked
+stagnated after 2000. At the same time, value added in similar wood
+product manufacturing industries and the rest of manufacturing continued
+to grow, suggesting that something specific to the MH industry drove the
 post-2000 stagnation.
 
 Measures of total factor productivity (TFP) suggest an even starker
 post-2000 collapse. After years of moderate growth, the NBER-CES TFP
-index for the MH sector collapsed by over 40\% between 1999 and 2015
-even as productivity in other manufacturing industries continued to
-grow. MH are not immune to the construction productivity puzzle, and
-appear to be even more vulnerable to the forces driving down
-construction productivity.
+index for the MH sector collapsed by over 40\% between 1999 and 2015, a
+stark divergence from related manufacturing industries.
 
-\section{Data}\label{data}
+MH are not immune to the construction productivity puzzle. Indeed, they
+appear to have performed even worse the site-built construction,
+especially after 2000.
 
-I combine three data sources to construct a national panel of
-manufactured housing productivity from 1958 to 2018.
+\hypertarget{data}{%
+\section{Data}\label{data}}
+
+I combine two data sources to construct a national panel of manufactured
+housing productivity from 1958 to 2018.
 
 \textbf{Census Manufactured Housing Survey (MHS).} The MHS provides
 annual counts of manufactured home shipments and placements, average
 sales prices by unit type (single-wide and double-wide), and state-level
 shipment detail. The shipments series extends back to 1959.
 
-\textbf{County Business Patterns (CBP).} I use the harmonized CBP panel
-from \citet{eckert_early_2022} through 2016 and splice in Census API
-data from 2017 onward for NAICS 321991 (Manufactured Home
-Manufacturing). CBP provides March-12 reference payroll employment.
-
 \textbf{NBER-CES Manufacturing Industry Database.} The NBER-CES database
-\citep{becker_nber-ces_2021} provides annual data on employment, value
-added, shipments, materials costs, capital stocks, and total factor
-productivity for all U.S. manufacturing industries at the six-digit
-NAICS level from 1958 to 2018. I use the 1997 NAICS concordance file,
-which includes NAICS 321991 throughout the panel. Value added is
-deflated using the industry-specific shipments price deflator (1997 =
-1.0). The four-factor TFP index accounts for labor, capital, energy, and
-materials inputs.
+provides annual data on employment, value added, shipments, materials
+costs, capital stocks, and total factor productivity for all U.S.
+manufacturing industries at the six-digit NAICS level from 1958 to 2018
+\citep{becker_nber-ces_2021}. Value added is deflated using the
+industry-specific shipments price deflator (1997 = 1.0), and the
+four-factor TFP index accounts for labor, capital, energy, and materials
+inputs.
 
-\section{Results}\label{results}
+\hypertarget{results}{%
+\section{Results}\label{results}}
 
+\hypertarget{physical-output-per-employee}{%
 \subsection{Physical output per
-employee}\label{physical-output-per-employee}
+employee}\label{physical-output-per-employee}}
 
 Figure \ref{fig:output-pemp} plots units of housing output per employee
-for manufactured housing (using both MHS shipments and placements) and
-residential construction (building permits per employee in NAICS 2361).
-MH shipments per worker averaged roughly six units per employee through
-the mid-1990s, then fell sharply to roughly two to three units by the
-mid-2000s. This decline coincided with the collapse of the subprime
-lending channel that had financed many MH purchases, which eliminated
-the lowest-income buyers and shifted demand toward larger,
-higher-quality units.
+for manufactured housing. MH shipments per worker averaged above five
+units per employee through the mid-1990s, then fell sharply to roughly
+2.5 units by the mid-2000s.
+
+This decline in physical output is partly the consequence of large and
+rapid changes in demand. Financing for MH collapsed in the early 2000s,
+eliminating the lowest-income buyers and shifting industry output to
+satisfy the remaining customers, with better credit and demand for
+larger, higher-quality units.
+
+I partly account for this shift by constructing a price-weighted Fisher
+aggregate of single- and double-wide placements per employee. This
+measure accounts for a modest shift in the mix of units over time, but
+it cannot capture quality improvements within unit types. The Fisher
+aggregate shows a similar post-2000 decline, though the drop is slightly
+less severe.
 
 \begin{figure}[htbp]
   \centering
@@ -156,8 +167,9 @@ higher-quality units.
   \end{flushleft}
 \end{figure}
 
+\hypertarget{real-value-added-per-employee}{%
 \subsection{Real value added per
-employee}\label{real-value-added-per-employee}
+employee}\label{real-value-added-per-employee}}
 
 Figure \ref{fig:va-pemp} shows real value added per employee from the
 NBER-CES database. In contrast to the physical output measure, labor
@@ -184,7 +196,8 @@ but substantially more valuable homes.
   \end{flushleft}
 \end{figure}
 
-\subsection{Total factor productivity}\label{total-factor-productivity}
+\hypertarget{total-factor-productivity}{%
+\subsection{Total factor productivity}\label{total-factor-productivity}}
 
 Figure \ref{fig:tfp} plots the NBER-CES four-factor TFP index, which
 adjusts for labor, capital, energy, and materials inputs, for
@@ -223,7 +236,8 @@ construction productivity.
   \end{flushleft}
 \end{figure}
 
-\section{Discussion and Next Steps}\label{discussion-and-next-steps}
+\hypertarget{discussion-and-next-steps}{%
+\section{Discussion and Next Steps}\label{discussion-and-next-steps}}
 
 The TFP collapse after 1998 coincides almost exactly with the demand
 shock that hit manufactured housing when the subprime chattel-lending
@@ -257,13 +271,12 @@ and that the industry may instead have settled into a persistently
 low-scale equilibrium.
 
 Geographic fragmentation compounds the problem. Transport costs for
-finished manufactured homes are steep (wide loads, escort vehicles,
-state permits), so each factory serves a limited radius. With aggregate
-demand down 75 percent and spread unevenly across states, many regional
-markets cannot sustain a factory at efficient scale. The industry faces
-the worst of both worlds: too few units nationally for industry-level
-scale economies, and too dispersed geographically for any single plant
-to compensate.
+finished manufactured homes are steep (about \$13-14 per mile), so each
+factory serves a limited radius. With aggregate demand down 75 percent
+and spread unevenly across states, many regional markets cannot sustain
+a factory at efficient scale. The industry faces the worst of both
+worlds: too few units nationally for industry-level scale economies, and
+too dispersed geographically for any single plant to compensate.
 
 Several extensions could test this scale hypothesis. First, plant-level
 microdata from the Census of Manufactures for NAICS 321991 would allow
