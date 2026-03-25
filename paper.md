@@ -15,15 +15,17 @@ Aggregate data point to a large and decades-long decline in U.S. construction se
 
 So, what about manufactured housing? 
 
-Manufactured homes are immune to many of the frictions that are often blamed for poor construction productivity: unpredictable weather, fragmented local building codes, and the complex coordination of multiple subcontractors on a construction site. Factory-built housing is assembled indoors in a controlled environment and has been regulated by a single federal code since 1976. Thus, the sector offers a natural test case: are site-specific frictions the main drivers of poor construction productivity, or are there more general forces at work? Have the same or similar forces also hamstrung factory-built housing?
+Manufactured homes are immune to many of the frictions that are often blamed for poor construction productivity: unpredictable weather, fragmented local building codes, and the complex coordination of multiple subcontractors on a construction site. These complications are absent from the production process for manufactured homes, which are assembled indoors in a controlled environment and have been regulated by a single federal code since 1976. Thus, the sector offers a natural test case: are site-specific frictions the main drivers of poor construction productivity, or are there more general forces at work? Have the same or similar forces also hamstrung factory-built housing?
 
 I start by studying physical output measures. The story is grim: manufactured housing (MH) shipments per employee fell by roughly half between the mid-1990s and the mid-2000s, though they partly recovered after 2015. In terms of raw output, MH productivity appears dismal.[^1]
 
 [^1]: An important qualification for all these measures of productivity is that they struggle to account for changes in quality over time. Despite the apparent homogeneity of mobile homes, quality in this market does appear to have increased: in nominal terms, average sales prices nearly tripled between 1990 and 2018, rising from \$28,000 to almost \$80,000. The market also shifted modestly towards double-wide units over the same period, potentially with higher quality fixtures and appliances.
 
-Units per worker, however, ignores investment. If firms respond to falling demand by substituting capital for labor — buying machines that allow fewer workers to keep the line running — then raw output per worker understates the resources actually used to produce each unit. Real value added per employee, from the NBER-CES database, accounts for this by measuring the dollar value the industry adds (revenue minus materials costs) per worker, adjusted for inflation.[^2] This series tells a more nuanced story: labor productivity grew steadily from the late 1950s through the 1990s, then stagnated after 2000 rather than collapsing outright. The gap between falling output per worker and flat value added per worker suggests that capital deepening — more machinery per remaining employee — propped up labor productivity even as the industry shrank. At the same time, value added in similar wood product manufacturing industries continued to grow, suggesting that something specific to the MH industry drove the post-2000 stagnation.
+Units per worker, however, treats every home equally: a small single-wide counts the same as a large double-wide. After the demand collapse of the early 2000s wiped out the low-end chattel-lending market, the remaining buyers demanded larger, higher-quality units. When the product mix shifts toward more expensive homes, units per worker can fall even as dollar-valued productivity holds steady — fewer but more valuable units per worker is the same dollars per worker. Real value added per employee, from the NBER-CES database, measures the dollar value the industry adds (revenue minus materials costs) per worker, adjusted for inflation.[^2]
 
-[^2]: The NBER-CES deflator is based on the Producer Price Index for manufactured housing, which tracks prices for specific product categories over time. It is not hedonic, so within-product quality improvements — better appliances, insulation, or finishes at a given price point — are treated as price increases and deflated away. To the extent that quality has risen, the measures presented below understate true performance.
+This series tells a more nuanced story: labor productivity grew steadily from the late 1950s through the 1990s, then stagnated after 2000 rather than collapsing outright. The divergence between falling units per worker and flat value added per worker is consistent with the post-2000 composition shift toward larger, more expensive homes. At the same time, value added in similar wood product manufacturing industries continued to grow, suggesting that something specific to the MH industry drove the post-2000 stagnation.
+
+[^2]: The NBER-CES deflator is based on the Producer Price Index for manufactured housing, which tracks prices for specific product categories over time. It is not hedonic, so within-product quality improvements — better insulation or appliances at a given price point — are not recognized as output gains. To the extent that such improvements occurred, real value added understates true performance.
 
 Measures of total factor productivity (TFP), which strip out the contribution of capital along with other inputs, suggest an even starker post-2000 collapse. After years of moderate growth, the NBER-CES TFP index for the MH sector fell by over 40\% between 1999 and 2015, a stark divergence from related manufacturing industries.
 
@@ -39,7 +41,7 @@ I combine two data sources to construct a national panel of manufactured housing
 **County Business Patterns (CBP).** I use the harmonized CBP panel from @eckert_early_2022 through 2016 and splice in Census API data from 2017 onward for NAICS 321991 (Manufactured Home Manufacturing).
 -->
 
-**NBER-CES Manufacturing Industry Database.** The NBER-CES database provides annual data on employment, value added, shipments, materials costs, capital stocks, and total factor productivity for all U.S. manufacturing industries at the six-digit NAICS level from 1958 to 2018 [@becker_nber-ces_2021]. Value added is deflated using the industry-specific shipments price deflator (1997 = 1.0), and the four-factor TFP index accounts for labor, capital, energy, and materials inputs.
+**NBER-CES Manufacturing Industry Database.** The NBER-CES database provides annual data on employment, value added, shipments, materials costs, capital stocks, and total factor productivity for all U.S. manufacturing industries at the six-digit NAICS level from 1958 to 2018 [@becker_nber-ces_2021]. Value added is deflated using the industry-specific shipments price deflator, and the four-factor TFP index accounts for labor, capital, energy, and materials inputs.
 
 # Results
 
@@ -53,14 +55,16 @@ Figure \ref{fig:output-pemp} plots units of housing output per employee for manu
   \includegraphics[width=\textwidth]{output/output_pemp.pdf}
   \begin{flushleft}
   \begin{footnotesize}
-  \emph{  Notes:} MH placements and shipments per employee. Fisher placements are a price-weighted aggregate of single- and double-wide placements. Source: Census MHS and NBER-CES Manufacturing Industry Database.
+  \emph{  Notes:} MH placements and shipments per employee. Fisher placements are a price-weighted aggregate of single- and double-wide placements.
+  
+  \emph{  Source:} Census MHS and NBER-CES Manufacturing Industry Database.
   \end{footnotesize}
   \end{flushleft}
 \end{figure}
 
-This decline in physical output is partly the consequence of large and rapid changes in demand. Financing for MH collapsed in the early 2000s, eliminating the lowest-income buyers and shifting industry output to satisfy the remaining customers, with better credit and demand for larger, higher-quality units.
+This decline in physical output is partly the consequence of large and rapid changes in demand. Financing for MH collapsed in the early 2000s, eliminating the lowest-income buyers and shifting industry output to satisfy the remaining customers, with better credit and demand for larger, higher-quality units. The share of double-wide placements rose from 50\% of units in 1996 to over 75\% in 2003.
 
-I partly account for this shift by constructing a price-weighted Fisher aggregate of single- and double-wide placements per employee. This measure accounts for the modest shift in the mix of units over time by weighting the quantity of single- and double-wide placements by their relative prices. However, it cannot capture quality improvements within unit types. The Fisher aggregate shows a similar post-2000 decline, though the drop is slightly less severe.
+I partly adjust for this shift by constructing a price-weighted Fisher aggregate of single- and double-wide placements per employee. This measure accounts for the shift in the mix of units over time by weighting the quantity of single- and double-wide placements by their prices. Importantly, it cannot capture quality improvements within unit types. The Fisher aggregate shows a similar post-2000 decline, though the drop is slightly less severe.
 
 ## Real value added per employee
 
@@ -73,14 +77,16 @@ Figure \ref{fig:va-pemp} shows real value added per employee from the NBER-CES d
   \begin{flushleft}
   \begin{footnotesize}
   \emph{  Notes:} Value added deflated by shipments price index (1997 =
-  1.0). Comparison series are aggregates for other NAICS 321 (wood product manufacturing) industries. Source: NBER-CES Manufacturing Industry Database.
+  1.0). Comparison series are aggregates for other NAICS 321 (wood product manufacturing) industries.
+  
+  \emph{  Source:} NBER-CES Manufacturing Industry Database.
   \end{footnotesize}
   \end{flushleft}
 \end{figure}
 
 At the same time, however, the industry performed much worse than comparable manufacturing sectors. Wood product manufacturing industries grew steadily through the 2000s, ending the 2010s with nearly double the real value added per employee of MH despite starting at a similar level in the 1990s.
 
-Factory-built housing has high fixed costs: the factory itself, jigs, tooling, and quality-control infrastructure. At 1990s volumes, these costs were spread over many units. After the demand collapse, though, the same capital stock produced a fraction of the output, and the "capital deepening" holding up output per employee in Figure \ref{fig:va-pemp} may partly reflect underutilized capacity rather than genuine investment per unit of output, especially immediately after 2000.
+The most likely explanation for the divergence between raw output and value-added measures is that the composition of output shifted towards higher-quality, more expensive units after 1999.
 
 ## Total factor productivity
 
@@ -96,7 +102,8 @@ Figure \ref{fig:tfp} plots the NBER-CES four-factor TFP index, which adjusts for
   materials inputs. Base year 1997 = 1.0. Comparison series are
   Domar-weighted aggregates of annual industry TFP growth for
   other NAICS 321 (wood product manufacturing) industries.
-  Source: NBER-CES Manufacturing Industry Database.
+
+  \emph{  Source:} NBER-CES Manufacturing Industry Database.
   \end{footnotesize}
   \end{flushleft}
 \end{figure}
@@ -115,6 +122,8 @@ The scale interpretation has both within-plant and market-level dimensions. With
 
 The severity of the demand shock also makes it unlikely that standard reallocation forces offset the productivity decline. In a Melitz-style framework, negative demand shocks should induce the least productive firms to exit, raising average productivity among survivors. The fact that MH TFP fell sharply despite substantial industry contraction suggests that the loss of scale economies dominated any cleansing effect from the exit of low-productivity plants.
 
-Both site-built construction and manufactured housing have experienced poor productivity performance, but likely for quite different reasons. Site-built construction has relatively little in the way of plant-level economies of scale — each project is assembled on-site by teams of subcontractors — and was not much affected by the large swings in residential investment that devastated MH. The problems in site-built construction may instead be related to fragmented local regulations that prevent large, efficient builders from producing standardized homes on large greenfield sites, a mode of production that was historically more common [@goolsbee_strange_2023]. Manufactured housing, by contrast, had achieved substantial scale economies through factory production but lost them after 2000 when the collapse of chattel lending permanently shrank its market. The common thread is not a shared mechanism but a shared outcome: in both cases, structural features of the industry — regulatory fragmentation for site-built, geographic fragmentation and demand dependence for MH — have prevented the realization of productivity gains that factory production might otherwise deliver.
+A lack of scale economies may also explain the poor performance of site-built construction. @damico_why_2024 argue that fragmented local regulations prevent large, efficient builders from producing standardized homes on large greenfield sites, a mode of production that was historically more common and which contributed to the industry's productivity growth in the years after World War II.
+
+While manufactured housing managed to achieve substantial scale economies before 1999, the industry appears unlikely to ever regain its former size. Economics of scale in home-building remain elusive. For both site-built and manufactured homes, structural features of the industry -- regulatory fragmentation, high transportation costs, and a secular decline in demand due to falling fertility -- limit the size of the market, prevent learning-by-doing, and raise the cost of housing.
 
 # References

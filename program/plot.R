@@ -225,3 +225,57 @@ ggsave(
     width = 9,
     height = 5
 )
+
+# Plot 5: Share of double-wide units in shipments and placements ----
+double_wide_labels <- c(
+    share_double_ship  = "Shipments",
+    share_double_place = "Placements"
+)
+
+dt_double <- dt_nat[
+    !is.na(shipments_double) | !is.na(placements_double),
+    .(
+        year,
+        share_double_ship  = shipments_double / shipments,
+        share_double_place = placements_double / placements
+    )
+]
+
+dt_double_long <- melt(
+    dt_double,
+    id.vars = "year",
+    variable.name = "series",
+    value.name = "share"
+)[!is.na(share)]
+
+p_double_wide <- ggplot(
+    dt_double_long[series %in% names(double_wide_labels)],
+    aes(x = year, y = share, color = series, shape = series)
+) +
+    geom_line(linewidth = 0.5, linetype = "dashed") +
+    geom_point(size = 2) +
+    scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    scale_color_manual(
+        values = setNames(v_palette[seq_along(double_wide_labels)], names(double_wide_labels)),
+        breaks = names(double_wide_labels),
+        labels = unname(double_wide_labels)
+    ) +
+    scale_shape_manual(
+        values = setNames(v_shapes[seq_along(double_wide_labels)], names(double_wide_labels)),
+        breaks = names(double_wide_labels),
+        labels = unname(double_wide_labels)
+    ) +
+    labs(
+        x = NULL,
+        y = "Share double-wide",
+        color = NULL,
+        shape = NULL
+    ) +
+    theme_paper()
+
+ggsave(
+    here("output", "double_wide_share.pdf"),
+    p_double_wide,
+    width = 9,
+    height = 5
+)

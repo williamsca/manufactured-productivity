@@ -21,10 +21,14 @@ library(here)
 library(data.table)
 
 csv_path <- here("data", "nber-ces", "nberces5818v1_n1997.csv")
+# csv_path <- here("data", "nber-ces", "nberces5818v1_n2012.csv")
+
+data_url <- "https://data.nber.org/nberces/nberces5818v1/nberces5818v1_n1997.csv"
+# data_url <- "https://data.nber.org//nberces/nberces5818v1/nberces5818v1_n2012.csv"
 
 if (!file.exists(csv_path)) {
     dir.create(dirname(csv_path), showWarnings = FALSE, recursive = TRUE)
-    url <- "https://data.nber.org/nberces/nberces5818v1/nberces5818v1_n1997.csv"
+    url <- data_url
     message("Downloading NBER-CES data from ", url)
     download.file(url, csv_path, mode = "wb")
 }
