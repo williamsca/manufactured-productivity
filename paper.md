@@ -7,6 +7,7 @@ author:
 date: March 2026
 abstract:
 bibliography: manufactured-productivity.bib
+thanks: I am grateful to Tyler Pullen for his feedback on an early draft of this essay.
 ---
 
 # Introduction
