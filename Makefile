@@ -13,21 +13,16 @@ sample.Rds: $(DERIVED_DIR)/sample.Rds
 $(DERIVED_DIR) $(OUTPUT_DIR):
 	mkdir -p $@
 
-$(DERIVED_DIR)/census-bps.Rds: $(IMPORT_DIR)/import-bps.R .Renviron | $(DERIVED_DIR)
-	$(R_SCRIPT) $<
 
-
-$(DERIVED_DIR)/mhs-state-year.Rds $(DERIVED_DIR)/mhs-national-year.Rds &: $(IMPORT_DIR)/import-mhs.R .Renviron | $(DERIVED_DIR)
+$(DERIVED_DIR)/mhs-national-year.Rds &: $(IMPORT_DIR)/import-mhs.R .Renviron | $(DERIVED_DIR)
 	$(R_SCRIPT) $<
 
 $(DERIVED_DIR)/nberces-industries.Rds $(DERIVED_DIR)/nberces-mh.Rds &: $(IMPORT_DIR)/import-nberces.R | $(DERIVED_DIR)
 	$(R_SCRIPT) $<
 
-$(DERIVED_DIR)/sample-state.Rds $(DERIVED_DIR)/sample.Rds &: \
+$(DERIVED_DIR)/sample.Rds &: \
 	$(IMPORT_DIR)/databuild.R \
-	$(DERIVED_DIR)/mhs-state-year.Rds \
 	$(DERIVED_DIR)/mhs-national-year.Rds \
-	$(DERIVED_DIR)/census-bps.Rds \
 	$(DERIVED_DIR)/nberces-mh.Rds | $(DERIVED_DIR)
 	$(R_SCRIPT) $<
 

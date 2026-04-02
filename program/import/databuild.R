@@ -1,15 +1,10 @@
-# Build state-year and national-year productivity panels.
-#
-# State panel output:
-#   derived/sample-state-year.Rds
-#   derived/sample.Rds              (legacy alias)
+# Build national-year productivity panels.
 #
 # National panel output:
 #   derived/sample-national-year.Rds
 #
 # Core output measures:
 #   shipments / placements / prices from Census MHS
-#   permits_sf / permits_mf from Census BPS
 #
 
 rm(list = ls())
@@ -73,40 +68,11 @@ print_panel_summary <- function(dt, label) {
 # Import ----
 dt_mhs_state <- readRDS(here("derived", "mhs-state-year.Rds"))
 dt_mhs_nat <- readRDS(here("derived", "mhs-national-year.Rds"))
-dt_bps <- readRDS(here("derived", "census-bps.Rds"))
 dt_nberces <- readRDS(here("derived", "nberces-mh.Rds"))
-
-# BPS: state and national permits ----
-dt_bps_state <- copy(dt_bps)
-dt_bps_state[, permits_mf := permits_tot - permits_sf]
-dt_bps_state[, permits_tot := NULL]
-
-dt_bps_nat <- dt_bps[
-    ,
-    .(
-        permits_sf = sum(permits_sf, na.rm = TRUE),
-        permits_tot = sum(permits_tot, na.rm = TRUE)
-    ),
-    by = year
-]
-dt_bps_nat[, permits_mf := permits_tot - permits_sf]
-dt_bps_nat[, permits_tot := NULL]
-
-# State panel ----
-dt_state <- copy(dt_mhs_state)
-
-dt_state <- merge(
-    dt_state,
-    dt_bps_state,
-    by = c("statefp", "year"),
-    all = TRUE
-)
-setorder(dt_state, statefp, year)
 
 # National panel ----
 dt_nat <- copy(dt_mhs_nat)
 
-dt_nat <- merge(dt_nat, dt_bps_nat, by = "year", all = TRUE)
 dt_nat[, placements_fisher := compute_fisher_quantity(
     .SD,
     qty_cols = c("placements_single", "placements_double"),
@@ -128,8 +94,6 @@ dt_nat[, place_fisher_pemp_mh_nberces :=
 setorder(dt_nat, year)
 
 # export ----
-saveRDS(dt_state, here("derived", "sample-state.Rds"))
 saveRDS(dt_nat, here("derived", "sample.Rds"))
 
-print_panel_summary(dt_state, "Saved state-year panel")
 print_panel_summary(dt_nat, "Saved national-year panel")

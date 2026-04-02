@@ -40,7 +40,8 @@ dt_nat <- as.data.table(readRDS(here("derived", "sample.Rds")))
 
 dt_nat[year == 1997, tfp4_nberces] - dt_nat[year == 2015, tfp4_nberces]
 
-dt_nberces_ind <- as.data.table(readRDS(here("derived", "nberces-industries.Rds")))
+dt_nberces_ind <- as.data.table(readRDS(
+    here("derived", "nberces-industries.Rds")))
 series_labels <- c(
     place_pemp_mh_nberces = "MH placements / L",
     # placements_fisher_pemp = "MH placements / L (Fisher)",
