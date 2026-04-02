@@ -20,6 +20,18 @@ theme_paper <- function(base_size = 14) {
         )
 }
 
+theme_web <- function(base_size = 14) {
+    theme_classic(base_size = base_size) +
+        theme(
+            text = element_text(family = "Palatino"),
+            legend.position = "bottom",
+            panel.grid.major.y = element_line(color = "gray90"),
+            panel.grid.minor = element_blank(),
+            plot.background = element_rect(fill = "#fffff8", color = NA),
+            panel.background = element_rect(fill = "#fffff8", color = NA)
+        )
+}
+
 # import ----
 dt_nat <- as.data.table(readRDS(here("derived", "sample.Rds")))
 
@@ -117,6 +129,11 @@ ggsave(
     width = 9,
     height = 5
 )
+ggsave(
+    here("output", "output_pemp.png"),
+    p_output_pemp + theme_web(),
+    width = 6, height = 4, dpi = 150, bg = "#fffff8"
+)
 
 # Plot 2: Real value added per employee (NBER-CES) ----
 dt_va <- dt_nberces_ind[
@@ -151,6 +168,11 @@ ggsave(
     p_va_pemp,
     width = 9,
     height = 5
+)
+ggsave(
+    here("output", "va_pemp.png"),
+    p_va_pemp + theme_web(),
+    width = 6, height = 4, dpi = 150, bg = "#fffff8"
 )
 
 # Plot 3: MH investment and capital stock (NBER-CES) ----
@@ -190,6 +212,11 @@ ggsave(
     width = 9,
     height = 5
 )
+ggsave(
+    here("output", "mh_capital.png"),
+    p_mh_capital + theme_web(),
+    width = 6, height = 4, dpi = 150, bg = "#fffff8"
+)
 
 # Plot 4: TFP index (NBER-CES) ----
 dt_tfp <- dt_nberces_ind[
@@ -224,6 +251,11 @@ ggsave(
     p_tfp,
     width = 9,
     height = 5
+)
+ggsave(
+    here("output", "tfp.png"),
+    p_tfp + theme_web(),
+    width = 6, height = 4, dpi = 150, bg = "#fffff8"
 )
 
 # Plot 5: Share of double-wide units in shipments and placements ----
@@ -278,4 +310,9 @@ ggsave(
     p_double_wide,
     width = 9,
     height = 5
+)
+ggsave(
+    here("output", "double_wide_share.png"),
+    p_double_wide + theme_web(),
+    width = 6, height = 4, dpi = 150, bg = "#fffff8"
 )

@@ -45,6 +45,18 @@ $(DERIVED_DIR)/sample-state.Rds $(DERIVED_DIR)/sample.Rds &: \
 paper.html: paper.md
 	pandoc --citeproc paper.md --template=html.template -o $@
 
+# Blog post for Jekyll site
+BLOG_DIR ?= ../../williamsca.github.io
+BLOG_IMG = $(BLOG_DIR)/assets/images
+BLOG_POST = $(BLOG_DIR)/_posts/$(shell date +%Y-%m-%d)-manufactured-productivity.md
+BLOG_PNGS = $(wildcard output/*.png)
+
+blog: paper.md blog-filter.lua manufactured-productivity.bib $(BLOG_PNGS)
+	@mkdir -p $(BLOG_IMG)
+	cp $(BLOG_PNGS) $(BLOG_IMG)/
+	pandoc -L blog-filter.lua -t html --wrap=none \
+		--template=blog.template paper.md > $(BLOG_POST)
+	@echo "Blog post written to $(BLOG_POST)"
 
 # Latex and CSL templates available at: '~/.pandoc/templates' and '~/.pandoc/csl'
 

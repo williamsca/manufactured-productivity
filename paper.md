@@ -1,5 +1,5 @@
 ---
-title: "Productivity in Off-Site Construction"
+title: "Productivity in Manufactured Housing"
 author:
 - name: Colin Williams
   affiliation: University of Virginia
@@ -8,9 +8,8 @@ date: March 2026
 abstract:
 bibliography: manufactured-productivity.bib
 thanks: I am grateful to Tyler Pullen for his feedback on an early draft of this essay.
+tags: ['housing', 'productivity']
 ---
-
-# Introduction
 
 Aggregate data point to a large and decades-long decline in U.S. construction sector productivity. Value added per worker in 2020 was roughly 40 percent below its 1970 level, a remarkably poor record for a major sector [@goolsbee_strange_2023]. Conversely, in manufacturing industries where goods can be produced in factories, productivity has risen substantially over time [@potter_origins_2025].
 
@@ -46,7 +45,7 @@ I combine two data sources to construct a national panel of manufactured housing
 
 ## Physical output per employee
 
-Figure \ref{fig:output-pemp} plots units of housing output per employee for manufactured housing. MH shipments per worker averaged above five units per employee through the mid-1990s, then fell sharply to roughly 2.5 units by the mid-2000s.
+I first examine units of housing output per employee for manufactured housing. MH shipments per worker averaged above five units per employee through the mid-1990s, then fell sharply to roughly 2.5 units by the mid-2000s.
 
 \begin{figure}[htbp]
   \centering
@@ -54,8 +53,8 @@ Figure \ref{fig:output-pemp} plots units of housing output per employee for manu
   \includegraphics[width=\textwidth]{output/output_pemp.pdf}
   \begin{flushleft}
   \begin{footnotesize}
-  \emph{  Notes:} MH placements and shipments per employee. Fisher placements are a price-weighted aggregate of single- and double-wide placements.
-  
+  \emph{  Notes:} MH placements and shipments per employee. Fisher placements are a price-weighted aggregate of single- and double-wide placements. \\
+
   \emph{  Source:} Census MHS and NBER-CES Manufacturing Industry Database.
   \end{footnotesize}
   \end{flushleft}
@@ -67,7 +66,7 @@ I adjust for this shift by constructing a price-weighted Fisher aggregate of sin
 
 ## Real value added per employee
 
-Figure \ref{fig:va-pemp} shows real value added per employee from the NBER-CES database. In contrast to the physical output measure, labor productivity shows a long upward trend since 1958: from a base of \$22,000, real value added per worker roughly tripled over the next forty years to \$63,000 (1997 dollars). Post-2000, value-added stagnated but did not fall, and by the late 2010s value added per employee remained near its peak.
+I turn next to a measure of real value added per employee from the NBER-CES database. In contrast to the physical output measure, labor productivity shows a long upward trend since 1958: from a base of \$22,000, real value added per worker roughly tripled over the next forty years to \$63,000 (1997 dollars). Post-2000, value-added stagnated but did not fall, and by the late 2010s value added per employee remained near its peak.
 
 \begin{figure}[htbp]
   \centering
@@ -89,7 +88,7 @@ The most likely explanation for the divergence between raw output and value-adde
 
 ## Total factor productivity
 
-Figure \ref{fig:tfp} plots the NBER-CES four-factor TFP index, which adjusts for labor, capital, energy, and materials inputs, for manufactured housing and Domar-weighted aggregates of other manufacturing industries.[^3] The story is quite similar to value added: MH TFP rose steadily between 1960 and 1999, then declined precipitously to 0.54 by 2013. The partial recovery to 0.65 by 2016 still leaves TFP well below its level in 1960.
+Finally, I plot the NBER-CES four-factor TFP index, which adjusts for labor, capital, energy, and materials inputs, for manufactured housing and Domar-weighted aggregates of other manufacturing industries.[^3] The story is quite similar to value added: MH TFP rose steadily between 1960 and 1999, then declined precipitously to 0.54 by 2013. The partial recovery to 0.65 by 2016 still leaves TFP well below its level in 1960.
 
 \begin{figure}[htbp]
   \centering
