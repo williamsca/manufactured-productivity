@@ -53,7 +53,7 @@ I first examine units of housing output per employee for manufactured housing. M
   \includegraphics[width=\textwidth]{output/output_pemp.pdf}
   \begin{flushleft}
   \begin{footnotesize}
-  \emph{  Notes:} MH placements and shipments per employee. Fisher placements are a price-weighted aggregate of single- and double-wide placements. \\
+  \emph{  Notes:} MH placements and shipments per employee. Fisher placements are a price-weighted aggregate of single- and double-wide placements.
 
   \emph{  Source:} Census MHS and NBER-CES Manufacturing Industry Database.
   \end{footnotesize}

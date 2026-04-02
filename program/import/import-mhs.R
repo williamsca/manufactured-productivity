@@ -6,10 +6,7 @@ library(here)
 library(data.table)
 library(readxl)
 
-readRenviron(here(".Renviron"))
-data_path <- Sys.getenv("DATA_PATH")
-
-dt_states <- fread(file.path(data_path, "crosswalk", "states.txt"))[
+dt_states <- fread(here("crosswalk", "states.txt"))[
     , .(statefp, state_name)
 ]
 
