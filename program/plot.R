@@ -132,7 +132,11 @@ ggsave(
 )
 ggsave(
     here("output", "output_pemp.png"),
-    p_output_pemp + theme_web(),
+    p_output_pemp + theme_web() +
+        theme(
+            legend.position = c(0.02, 0.02),
+            legend.justification = c(0, 0)
+        ),
     width = 6, height = 4, dpi = 150, bg = "#fffff8"
 )
 
@@ -158,7 +162,7 @@ p_va_pemp <- ggplot(dt_va, aes(
     ) +
     labs(
         x = NULL,
-        y = "Real value added per employee (1997$, thousands)",
+        y = "Real value added per employee\n(1997$, thousands)",
         color = NULL,
         shape = NULL
     ) +
@@ -172,7 +176,11 @@ ggsave(
 )
 ggsave(
     here("output", "va_pemp.png"),
-    p_va_pemp + theme_web(),
+    p_va_pemp + theme_web() +
+        theme(
+            legend.position = c(0.02, 0.98),
+            legend.justification = c(0, 1)
+        ),
     width = 6, height = 4, dpi = 150, bg = "#fffff8"
 )
 
@@ -241,7 +249,7 @@ p_tfp <- ggplot(dt_tfp, aes(
     ) +
     labs(
         x = NULL,
-        y = "TFP index (1997 = 1.0)",
+        y = "TFP index\n(1997 = 1.0)",
         color = NULL,
         shape = NULL
     ) +
@@ -255,7 +263,11 @@ ggsave(
 )
 ggsave(
     here("output", "tfp.png"),
-    p_tfp + theme_web(),
+    p_tfp + theme_web() +
+        theme(
+            legend.position = c(0.02, 0.98),
+            legend.justification = c(0, 1)
+        ),
     width = 6, height = 4, dpi = 150, bg = "#fffff8"
 )
 
